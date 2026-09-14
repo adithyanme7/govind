@@ -577,15 +577,21 @@ button{ font-family: inherit; cursor: pointer; border: none; background: none; }
   .logo-text small{ font-size: 7px; letter-spacing: 2px; }
   .logo-mark{ width: 34px; height: 34px; font-size: 13px; }
   .about-inner, .gallery-grid, .services-grid, .footer-inner, .gallery-filters{ padding-left: 20px; padding-right: 20px; }
-  .section-inner.center{ padding: 60px 20px 40px; }
-  .hero-media{ min-height: 300px; display: flex; align-items: center; justify-content: center; }
-  .hero-image{ min-height: 300px; }
+  .section-inner.center{ padding: 56px 20px 36px; }
+  .section-inner.center h2{ font-size: 29px; line-height: 1.2; }
+  .hero-media{ height: min(112vw, 420px); min-height: 260px; display: flex; align-items: center; justify-content: center; }
+  .hero-image{ width: 100%; height: 100%; min-height: 0; object-fit: cover; }
   .hero-content{ padding: 42px 20px 48px; }
   .hero-title{ font-size: 34px; }
   .hero-desc{ font-size: 13px; }
-  .hero-actions{ gap: 20px; }
-  .btn{ padding: 13px 20px; }
+  .hero-actions{ align-items: stretch; flex-direction: column; gap: 12px; }
+  .hero-actions .btn{ justify-content: center; width: 100%; }
+  .btn{ padding: 13px 18px; }
   .btn-play{ font-size: 10px; }
+  .about-inner{ padding-top: 64px; padding-bottom: 64px; gap: 34px; }
+  .about-media{ aspect-ratio: 4/5; }
+  .about-text h2{ font-size: 29px; }
+  .about-desc{ font-size: 13px; }
   .gallery-filters{ justify-content: flex-start; gap: 8px 18px; margin-bottom: 24px; }
   .gallery-filter{ font-size: 9px; letter-spacing: 1px; }
   .gallery-grid{
@@ -604,6 +610,18 @@ button{ font-family: inherit; cursor: pointer; border: none; background: none; }
   .gallery-download span{ font-size: 8px; letter-spacing: .7px; }
   .gallery-cta{ padding: 0 20px; }
   .gallery-cta .btn{ width: 100%; justify-content: center; }
+  .services{ padding-bottom: 56px; }
+  .services-grid{ grid-template-columns: 1fr; gap: 0; padding: 0 20px; }
+  .service-item,
+  .service-item:nth-child(3n){ border-right: none; border-bottom: 1px solid rgba(217,138,154,.25); padding: 0 8px 22px; margin-bottom: 22px; }
+  .service-item:last-child{ border-bottom: none; margin-bottom: 0; }
+  .testimonial-grid{ padding: 0 20px; gap: 28px; }
+  .testimonials{ padding-bottom: 48px; }
+  .cta-inner{ padding: 52px 20px; gap: 24px; }
+  .cta-left h2{ font-size: 28px; }
+  .cta-actions{ align-items: stretch; flex-direction: column; gap: 14px; }
+  .cta-actions .btn{ justify-content: center; width: 100%; }
+  .cta-actions span{ text-align: center; }
   .footer-inner{ grid-template-columns: 1fr; padding: 0 20px 40px; }
   .footer-bottom{ flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
   .about-stats{ flex-direction: column; }
