@@ -8,9 +8,9 @@ const galleryCollections = {
   bday: ['DSC00259.jpg', 'DSC00267.jpg', 'DSC00272_1.jpg', 'DSC00291.jpg', 'DSC00452.jpg', 'DSC00957.jpg', 'DSC00973.jpg', 'DSC00982.jpg', 'DSC01063.jpg', 'DSC01068_1.jpg', 'DSC01115.jpg', 'DSC01121.jpg', 'DSC01124.jpg', 'DSC01319.jpg', 'DSC01623.jpg', 'DSC01643.jpg', 'DSC09720.jpg', 'DSC09724.jpg', 'DSC09730.jpg', 'DSC09741.jpg', 'DSC09744.jpg', 'DSC09750_1.jpg', 'DSC09830.jpg', 'DSC09837.jpg', 'DSC09839.jpg', 'DSC09936.jpg', 'DSC09958.jpg', 'DSC09960.jpg', 'DSC09963.jpg'],
   brands: ['IMG_0510.JPG', 'IMG_4145.JPG', 'IMG_5499.JPG', 'IMG_5501.JPG'],
   cultural: ['IMG_1044.JPG', 'IMG_5351 - Copy.JPG', 'IMG_5744.JPG', 'IMG_5745.JPG', 'IMG_6705 - Copy.JPG', 'IMG_6714.JPG', 'IMG_7033 - Copy.JPG', 'IMG_7452.jpg', 'IMG_7664.jpg', 'IMG_8645.jpg', 'IMG_9685.jpg', 'IMG_9686.jpg', 'IMG_9687.jpg', 'IMG_9688.jpg'],
-  edits: ['IMG_3446.MOV', 'IMG_3674.MOV', 'IMG_5977.MOV', 'IMG_6078.MOV', 'IMG_8321.MOV'],
+  edits: ['IMG_3446.mp4', 'IMG_3674.mp4', 'IMG_5688.mp4', 'IMG_5977.mp4', 'IMG_6078.mp4', 'IMG_8321.mp4'],
   model: ['DSC00078.jpg', 'DSC00362.jpg', 'DSC00878.jpg', 'DSC00879.jpg', 'DSC00881.jpg', 'DSC00894.jpg', 'DSC00896.jpg', 'DSC00918.jpg', 'DSC01039.jpg', 'DSC01073.jpg', 'DSC01166.jpg', 'DSC01462.jpg', 'DSC01464_1.jpg', 'DSC01845.jpg', 'DSC01859.jpg', 'DSC01870.jpg', 'DSC01894.jpg', 'DSC01932.jpg', 'DSC01935_1.jpg', 'DSC01938.jpg', 'DSC08592_2.jpg', 'DSC08632_1.jpg', 'DSC08684_1.jpg', 'DSC08700_1.jpg', 'DSC08718_1.jpg', 'DSC08798_1.jpg', 'DSC08834_1.jpg', 'DSC08848_1.jpg', 'DSC08872_1.jpg', 'DSC08903_1.jpg', 'DSC08958_1.jpg', 'DSC08981.jpg', 'DSC09033.jpg', 'DSC09044.jpg', 'DSC09264.jpg', 'IMG_0626.jpg', 'IMG_0627.jpg', 'IMG_2240.jpg', 'IMG_2260.jpg', 'IMG_4146.JPG', 'IMG_4176.PNG', 'IMG_4177.PNG', 'IMG_4179.JPG', 'IMG_9303.JPG'],
-  nature: ['DSC09487_1.jpg', 'DSC09489_1.jpg', 'IMG_1405.jpg', 'IMG_1872.jpg', 'IMG_1874.jpg', 'IMG_3282.JPG', 'IMG_3283.JPG', 'IMG_4094.JPG', 'IMG_4235.JPG', 'IMG_4380.JPG', 'IMG_5105.JPG', 'IMG_5387.JPG', 'IMG_5636.jpg', 'IMG_5637.jpg', 'IMG_5639.jpg', 'IMG_5688.MOV', 'IMG_6227.JPG', 'IMG_8352.jpg']
+  nature: ['DSC09487_1.jpg', 'DSC09489_1.jpg', 'IMG_1405.jpg', 'IMG_1872.jpg', 'IMG_1874.jpg', 'IMG_3282.JPG', 'IMG_3283.JPG', 'IMG_4094.JPG', 'IMG_4235.JPG', 'IMG_4380.JPG', 'IMG_5105.JPG', 'IMG_5387.JPG', 'IMG_5636.jpg', 'IMG_5637.jpg', 'IMG_5639.jpg', 'IMG_6227.JPG', 'IMG_8352.jpg']
 };
 
 const galleryLabels = {
@@ -28,7 +28,8 @@ const allWorkPriority = [
   ['bday', 'DSC01319.jpg'],
   ['brands', 'IMG_4145.JPG'],
   ['cultural', 'IMG_7664.jpg'],
-  ['model', 'IMG_0626.jpg']
+  ['model', 'IMG_0626.jpg'],
+  ['model', 'DSC01073.jpg']
 ];
 
 const galleryGrid = document.getElementById('galleryGrid');
@@ -42,7 +43,7 @@ const aboutImages = [
   { src: 'media/nature/IMG_4235.JPG', niche: 'UNTAMED' },
   { src: 'media/automotive/IMG_7274.JPG', niche: 'MOTION & MACHINES' },
   { src: 'media/cultural/IMG_7664.jpg', niche: 'HERITAGE IN FRAME' },
-  {src: 'media/model/IMG_0626.jpg' , niche:'FACES & MACHINES'}
+  {src: 'media/model/IMG_0626.jpg' , niche:'FACES & MACHINES'},
 ];
 let galleryExpanded = false;
 let currentGalleryCategory = 'featured';
@@ -94,8 +95,8 @@ function renderGallery(category = 'all') {
     const nicheCaption = category === 'all' || category === 'featured'
       ? `<figcaption>${galleryLabels[collection]}</figcaption>`
       : '';
-    const media = extension === 'mov'
-      ? `<video src="${source}" controls preload="metadata" aria-label="${photo}"></video>`
+    const media = ['mov', 'mp4'].includes(extension)
+      ? `<video src="${source}" controls playsinline preload="metadata" controlslist="nodownload noplaybackrate" disablepictureinpicture aria-label="${photo}"></video>`
       : ['heic', 'dng'].includes(extension)
         ? `<a class="gallery-download" href="${source}" download><span>Download original</span></a>`
         : `<img src="${source}" alt="${galleryLabels[collection]} photograph" loading="lazy">`;
@@ -152,10 +153,23 @@ if (menuToggle) {
 }
 
 // ============ ACTIVE NAV LINK ON SCROLL ============
-const sections = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id], footer[id]');
 const navLinks = document.querySelectorAll('.main-nav a');
+let pendingNavigationTarget = null;
+let navigationUnlockTimer;
+
+function activateNavLink(targetId) {
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${targetId}`);
+  });
+}
 
 function setActiveLink() {
+  if (pendingNavigationTarget) {
+    activateNavLink(pendingNavigationTarget);
+    return;
+  }
+
   let current = 'home';
   const scrollPos = window.scrollY + 150;
 
@@ -165,12 +179,11 @@ function setActiveLink() {
     }
   });
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+    current = sections[sections.length - 1]?.getAttribute('id') || current;
+  }
+
+  activateNavLink(current);
 }
 
 window.addEventListener('scroll', setActiveLink);
@@ -204,9 +217,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (targetId.length > 1) {
       const target = document.querySelector(targetId);
       if (target) {
+        if (this.closest('.main-nav')) {
+          pendingNavigationTarget = targetId.slice(1);
+          activateNavLink(pendingNavigationTarget);
+          window.clearTimeout(navigationUnlockTimer);
+          navigationUnlockTimer = window.setTimeout(() => {
+            pendingNavigationTarget = null;
+            setActiveLink();
+          }, 1200);
+        }
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   });
+});
+
+window.addEventListener('scrollend', () => {
+  window.clearTimeout(navigationUnlockTimer);
+  pendingNavigationTarget = null;
+  setActiveLink();
 });

@@ -365,6 +365,18 @@ button{ font-family: inherit; cursor: pointer; border: none; background: none; }
   object-fit: cover;
   background: #120e0d;
 }
+.gallery-card video:fullscreen{
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #000;
+}
+.gallery-card video:-webkit-full-screen{
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #000;
+}
 .gallery-download{
   width: 100%;
   height: 100%;
@@ -480,7 +492,7 @@ button{ font-family: inherit; cursor: pointer; border: none; background: none; }
 .footer-col ul a{ font-size: 13.5px; transition: color .2s ease; }
 .footer-col ul a:hover{ color: var(--rose-soft); }
 
-.social-row{ display: flex; gap: 10px; }
+.social-row{ display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .social-row a{
   width: 34px; height: 34px;
   border: 1px solid rgba(255,255,255,.15);
@@ -492,6 +504,16 @@ button{ font-family: inherit; cursor: pointer; border: none; background: none; }
 }
 .social-row a svg{ width: 15px; height: 15px; fill: #d9c9c5; }
 .social-row a:hover{ background: var(--maroon-deep); border-color: var(--maroon-deep); }
+.social-row .instagram-contact{ width: auto; height: 34px; gap: 9px; border: 0; border-radius: 0; color: #d9c9c5; font-size: 12px; }
+.social-row .instagram-contact:hover{ background: transparent; border-color: transparent; color: #fff; }
+.social-row .whatsapp-contact{ width: auto; height: 34px; gap: 9px; border: 0; border-radius: 0; color: #b6a8a3; font-size: 12px; }
+.social-row .whatsapp-contact svg{ width: 22px; height: 22px; flex: 0 0 auto; color: #58c878; }
+.social-row .whatsapp-contact:hover{ background: transparent; border-color: transparent; color: #fff; }
+.social-row .whatsapp-contact:hover svg{ color: #73e391; }
+.social-copy{ display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+.social-copy h3{ color: #fff; font-size: 13px; font-weight: 600; }
+.social-copy .phone-link{ width: fit-content; height: auto; border: 0; border-radius: 0; color: #b6a8a3; font-size: 12px; }
+.social-copy .phone-link:hover{ background: transparent; border-color: transparent; color: var(--rose-soft); }
 
 .latest-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .latest-grid img{ width: 100%; aspect-ratio: 1; object-fit: cover; }
